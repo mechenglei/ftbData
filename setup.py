@@ -10,7 +10,7 @@ setup(
     description=(
         'football games; score; football lottery'
     ),
-    long_description=open('README.rst').read(),
+    long_description=open('README.md').read(),
     author='chenglei',
     author_email='mechenglei@163.com',
     license='BSD License',
