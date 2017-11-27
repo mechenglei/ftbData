@@ -1,0 +1,34 @@
+Metadata-Version: 1.1
+Name: ftbData
+Version: 0.1.1
+Summary: football games; score; football lottery
+Home-page: https://github.com/mechenglei/ftbData
+Author: chenglei
+Author-email: mechenglei@163.com
+License: BSD License
+Description: # ftbData
+        ftbData是一个足球比赛数据统计的工具。
+        
+        ##　Usage
+        
+        from ftbData import games
+        
+        games.get_today()
+        games.get_today(odds=True)
+        games.get_his()
+        games.get_team(u'巴塞罗那')
+        games.get_event_rank(u'西甲')
+        
+        
+        
+        
+Platform: win7
+Platform: linux
+Classifier: Development Status :: 4 - Beta
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: Implementation
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Topic :: Software Development :: Libraries

@@ -1,0 +1,15 @@
+README.rst
+setup.py
+ftbData/__init__.py
+ftbData/config.py
+ftbData/games.py
+ftbData/items.py
+ftbData/parser.py
+ftbData/stats.py
+ftbData/urls.py
+ftbData/utils.py
+ftbData.egg-info/PKG-INFO
+ftbData.egg-info/SOURCES.txt
+ftbData.egg-info/dependency_links.txt
+ftbData.egg-info/requires.txt
+ftbData.egg-info/top_level.txt
