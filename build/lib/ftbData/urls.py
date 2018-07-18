@@ -4,7 +4,7 @@
 __author__ = 'chenglei'
 
 import pandas as pd
-from config import BASE_URL, TEAM_URL, EVENT_URL, ODDS_URL
+from ftbData.config import BASE_URL, TEAM_URL, EVENT_URL, ODDS_URL
 
 class Urls(object):
 

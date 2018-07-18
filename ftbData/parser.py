@@ -7,10 +7,10 @@ import sys
 import pandas as pd
 from pyquery import PyQuery as pq
 
-from urls import Urls
-from items import ITEMS
-from config import TEAMS, EVENTS, COLUMNS
-from utils import extract_day, format_url, serialize, serialize_id
+from ftbData.urls import Urls
+from ftbData.items import ITEMS
+from ftbData.config import TEAMS, EVENTS, COLUMNS
+from ftbData.utils import extract_day, format_url, serialize, serialize_id
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -63,19 +63,19 @@ def parser(url, odds=False):
 
     if odds:
 
-       odds_items = [
-           parser_odds(url)
-           for url in df['odds_url'].tolist()
-       ]
+        odds_items = [
+            parser_odds(url)
+            for url in df['odds_url'].tolist()
+        ]
 
-       odds_df = pd.DataFrame([
-           odds_item
-           for odds_item in odds_items
-           if odds_item is not None
-       ])
+        odds_df = pd.DataFrame([
+            odds_item
+            for odds_item in odds_items
+            if odds_item is not None
+        ])
 
-       df = pd.merge(df, odds_df, how='outer')
-       del df['odds_url']
+        df = pd.merge(df, odds_df, how='outer')
+        del df['odds_url']
 
     return df
 

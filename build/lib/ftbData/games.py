@@ -5,16 +5,16 @@ __author__ = 'chenglei'
 import sys
 import pandas as pd
 
-from urls import Urls
-from utils import hint
-from parser import parser, parser_team, parser_event_stats, parser_event_url
+from ftbData.urls import Urls
+from ftbData.utils import hint
+from ftbData.parser import parser, parser_team, parser_event_stats, parser_event_url
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
 def get_today(odds=False):
-    return parser(Urls.url(pd.datetime.now().strftime('%Y%m%d')))
+    return parser(Urls.url(pd.datetime.now().strftime('%Y%m%d')), odds=odds)
 
 
 def get_his(start, end=None, odds=False):
@@ -23,7 +23,7 @@ def get_his(start, end=None, odds=False):
     else:
         ts = pd.DataFrame()
         for day in pd.date_range(start, end).strftime('%Y%m%d'):
-            ts = ts.append(parser(Urls.url(day)))
+            ts = ts.append(parser(Urls.url(day), odds=odds))
         return ts
 
 

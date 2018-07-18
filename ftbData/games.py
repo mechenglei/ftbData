@@ -5,9 +5,9 @@ __author__ = 'chenglei'
 import sys
 import pandas as pd
 
-from urls import Urls
-from utils import hint
-from parser import parser, parser_team, parser_event_stats, parser_event_url
+from ftbData.urls import Urls
+from ftbData.utils import hint
+from ftbData.parser import parser, parser_team, parser_event_stats, parser_event_url
 
 reload(sys)
 sys.setdefaultencoding('utf-8')

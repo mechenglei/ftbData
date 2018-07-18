@@ -1,4 +1,3 @@
-README.rst
 setup.py
 ftbData/__init__.py
 ftbData/config.py
