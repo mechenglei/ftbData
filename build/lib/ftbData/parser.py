@@ -122,7 +122,8 @@ def parser_team(url, odds=False):
             return '负'
 
     doc = pq(url).text()
-    games = eval(re.findall(r'SCHEDULES=(.+?])', doc)[0])
+
+    games = eval((re.findall(r'SCHEDULES=(.+?])', doc)[0]).split('SCHEDULES=')[1])
     df = pd.DataFrame(games)
     df['matchtime'] = df['matchtime'].apply(lambda x: pd.to_datetime(x, unit='s').strftime('%Y-%m-%d %H:%M'))
     df['score'] = df['homescore'].astype('str').str.cat(df['awayscore'].astype('str'), sep='-')
