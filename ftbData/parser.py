@@ -199,3 +199,46 @@ def parser_event_stats(url):
         columns.insert(1, u'升降级')
         columns = [ COLUMNS.get(column) for column in columns ]
     return pd.DataFrame(items, columns=columns)
+
+
+def parse_live(url, jc=None):
+	
+	index = 0
+	key = ''
+	
+	if jc is not None:
+		if jc == 'jc':
+			index = 0
+			key = '竞彩'
+		if jc == 'bd':
+			index = 1
+			key = '北单'
+		if jc == 'zc':
+			index = 2
+			key = '足彩'
+	
+	doc = pq(url).text()
+	text = eval(re.findall(r'THATDATA=({".+?}});', doc)[0])
+	teams = dict([[item[0], item[1][0].split(',')[0]] for item in text.get('teams').items()])
+	events = dict([[item[0], item[1][0].split(',')[0]] for item in text.get('events').items()])
+	living = text.get('matchesTrans').get('live')
+	unstart = [
+		{
+			'event': str(item[1]),
+	        'time': item[3],
+	        'hometeam': str(item[5][0]),
+	        'awayteam': str(item[6][0]),
+			'lottery': str(eval(item[-1])[-3][index])
+		}
+		for item in text.get('matchesTrans').get('notStart')
+	]
+
+	df = pd.DataFrame(unstart)
+	df['event'] = df['event'].map(events)
+	df['hometeam'] = df['hometeam'].map(teams)
+	df['awayteam'] = df['awayteam'].map(teams)
+	
+	if jc is not None:
+		df = df[df['lottery'].str.contains(key)]
+		
+	return df
